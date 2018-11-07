@@ -1,0 +1,41 @@
+#include<iostream.h>
+class Wallet
+{
+private:
+ int Balance;
+public:
+Wallet(): Balance(0) {}
+void getBalance()
+{
+cout<<"Enter Balance";
+cin>>Balance;
+}
+void showBalance()
+{
+cout<<"Total balance is:"<<Balance<<endl;
+};
+void Recipt(int amount)
+{
+Balance+=amount;
+}
+void Payment(int amount)
+{
+if(amount<=Balance)
+{
+Balance-=amount;
+}
+else
+cout<<"Payment can't be Make";
+}
+};
+int main()
+{
+clrscr();
+Wallet w1;
+w1.showBalance();
+w1.Recipt(100);
+w1.showBalance();
+w1.Payment(20);
+w1.showBalance();
+return 0;
+}
