@@ -1,0 +1,57 @@
+#include<iostream.h>
+#include<process.h>
+
+class Distance
+{
+private:
+int feet;
+float inches;
+public:
+Distance() : feet(0), inches(0.0)
+{ }
+Distance(int ft, float in) : feet(ft), inches(in)
+{ }
+void getdist()
+
+{
+cout<< "\nEnter feet:"; cin>>feet;
+cout<< "Enter inches:"; cin>>inches;
+}
+void showdist()
+{ cout << feet << "\'-" << inches << '\"'; }
+Distance operator - ( Distance );
+};
+
+Distance Distance::operator-(Distance d2)
+{
+int f = feet - d2.feet;
+float i = inches - d2.inches;
+
+if((feet<d2.feet)||(inches<d2.inches))
+{
+cout<<"Cannot Subract Because Second Values is Greater then First";
+exit(1);
+}
+else
+if(i >= 12.0)
+{
+i -= 12.0;
+f++;
+}
+
+return Distance(f,i);
+}
+
+int main()
+{
+clrscr();
+Distance dist1, dist2, dist3;
+dist1.getdist();
+dist2.getdist();
+dist3 = dist1 - dist2;
+cout << "dist1 = " ; dist1.showdist(); cout << endl;
+cout << "dist2 = " ; dist2.showdist(); cout << endl;
+cout << "dist3 : dist1 - dist2 = " ; dist3.showdist(); cout << endl;
+
+return 0;
+}
